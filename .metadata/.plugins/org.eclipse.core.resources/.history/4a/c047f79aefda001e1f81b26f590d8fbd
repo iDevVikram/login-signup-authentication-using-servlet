@@ -1,0 +1,33 @@
+package com.cetpa;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+import java.io.*;
+
+@WebServlet("/authenticateuser")
+public class LoginServlet extends HttpServlet 
+{
+	public void service(HttpServletRequest request ,HttpServletResponse response)throws ServletException,IOException
+	{
+		String userid=request.getParameter("loginEmail");
+		String password=request.getParameter("loginPassword");
+		try {}
+		catch(Exception ex){
+		}
+		}
+		if(userid.equals("admin") && password.equals("cetpa"))
+		{
+			response.sendRedirect("Home.html");
+		}
+		else {
+		PrintWriter pw= response.getWriter();
+		pw.println("<html>");
+		pw.println("<body>");
+		pw.println("<h1 style='color:red'>You have entered wrong id and password </h1>");
+		pw.println("</body>");
+		pw.println("</html>");
+		RequestDispatcher dp= request.getRequestDispatcher("Index.html");
+		dp.include(request,response);
+		}
+	}
+}

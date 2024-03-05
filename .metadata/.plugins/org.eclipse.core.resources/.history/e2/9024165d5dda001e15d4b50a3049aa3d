@@ -1,0 +1,27 @@
+package com.cetpa;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+import java.io.*;
+
+@WebServlet("/registerUser")
+public class RegisterUserServlet extends HttpServlet 
+{
+	public void service(HttpServletRequest request ,HttpServletResponse response)throws ServletException,IOException
+	{
+		String email=request.getParameter("email");
+		String password=request.getParameter("pass");
+		String name=request.getParameter("name");
+		String address=request.getParameter("address");
+		String gender=request.getParameter("gender");
+		try 
+		{
+			Class.forName("com.mysql.cj.jdbc.driver");
+			
+		}
+		catch(Exception ex) 
+		{
+			System.out.println(ex);
+		}
+	}
+}

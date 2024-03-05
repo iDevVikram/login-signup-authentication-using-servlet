@@ -1,0 +1,41 @@
+package com.cetpa;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+import java.io.*;
+import java.sql.*;
+@WebServlet("/registerUser")
+public class RegisterUserServlet extends HttpServlet 
+{
+	public void service(HttpServletRequest request ,HttpServletResponse response)throws ServletException,IOException
+	{
+		String name=request.getParameter("signupName");
+		String email=request.getParameter("signupEmail");
+		String password=request.getParameter("signupPassword");
+		String address=request.getParameter("signupaddress");
+		String gender=request.getParameter("gender");
+		try 
+		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection cn=DriverManager.getConnection("jdbc:mysql://localhost/servlet10","root","A2019cse@6991");
+		    PreparedStatement ps = cn.prepareStatement("insert into userinfo values(?,?,?,?,?)");
+		    ps.setString(1, name);
+		    ps.setString(2, email);
+		    ps.setString(3, password);
+		    ps.setString(4, address);
+		    ps.setString(5, gender);
+		    ps.executeUpdate();
+		    PrintWriter out=response.getWriter();
+		    out.println("<html>");
+		    out.println("<body>");
+		    out.println("<div style='text-align:center ;margin-top:20px'><h2> Dear "+name+" you have been registerd Successfully</h2></div>");
+		   out.print(" <a href='login.html'; style='a:hover{text-decoration: underline}'>login</a>");
+		    out.println("</body>");
+		    out.println("</html>");
+		}
+		catch(Exception ex) 
+		{
+			System.out.println(ex);
+		}
+	}
+}

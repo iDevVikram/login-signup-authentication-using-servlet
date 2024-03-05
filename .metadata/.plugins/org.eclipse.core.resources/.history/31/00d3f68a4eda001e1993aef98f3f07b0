@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="signin-signup-demo">
+        <property name="context-root" value="signin-signup-demo"/>
+        <property name="java-output-path" value="/signin-signup-demo/build/classes"/>
+    </wb-module>
+</project-modules>
